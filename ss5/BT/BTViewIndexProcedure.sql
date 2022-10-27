@@ -1,0 +1,68 @@
+use btviewindexstore;
+create database BTViewIndexStore;
+use BTViewIndexStore;
+create table Product (
+	id int primary key,
+    productCode int unique,
+    productName varchar(40),
+    productAmount int ,
+    productDescription varchar(50),
+    productStatus bit
+);
+insert into product 
+values 
+	   (2,2,'iphone8',4,'yellow',1),
+	   (3,3,'iphone',5,'blue',1),
+		(4,4,'iphone11',7,'blue',1),
+		(5,5,'iphone12',10,'blue',1);
+alter table product add column productPrice float; 
+create unique index productCode_index on product(productCode);
+create index index_name_price on product (productName,productPrice);
+explain select productName 
+from product 
+where productName = 'iphone12';
+
+create view viewProduct as 
+select productCode, productName, productPrice, productStatus 
+from product ; 
+select *
+from viewProduct;
+alter view viewProduct as
+	select productCode, productName, productPrice, productDescription,productStatus 
+from product ;
+drop view viewProduct;
+
+drop procedure getInfoAll;
+delimiter //
+create procedure getInfoAll ()
+begin
+select * 
+from product;
+end //
+delimiter ;
+call getInfoAll ;
+
+delimiter // 
+create procedure addProduct()
+begin 
+insert into product 
+values (10,10,'macbook30',6,'color:white',1,150000);
+end //
+delimiter ;
+call addProduct;
+drop procedure updateID;
+delimiter //
+create procedure updateID( id int,productName varchar(40))
+begin 
+update product set product.productName = productName where product.id = id;  
+end //
+delimiter ;
+set sql_safe_updates = 0;
+call updateID(3,"Iphone15");
+delimiter //
+create procedure deleteEntry (id int)
+begin 
+delete from product where product.id = id;
+end //
+delimiter ;
+call deleteEntry(2);
