@@ -6,6 +6,9 @@
 html{
     font-family: Arial, Helvetica, sans-serif;
 }
+body{
+    background-image: url(./asset/WallpaperDog-20519092.jpg);
+}
 .header{
     display: flex;
     color: white;
@@ -47,12 +50,13 @@ html{
     margin-top: 40px;
 }
 .comic{
+    background-color: rgba(240, 248, 255, 0.181);
     border-radius: 5px;
     margin: 10px;
     margin-top: 70px;
     padding: 10px 20px;
     text-decoration: none;
-    color: rgb(30, 30, 30);
+    color: rgba(222, 34, 181, 0.723);
     width: 40%;
     margin-bottom: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
