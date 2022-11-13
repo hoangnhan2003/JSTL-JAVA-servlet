@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap');
+*{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+a{
+    cursor: pointer;
+}
+.navbar-brand{
+    width: 10%;
+    position: relative;
+}
+.navbar-brand::after{
+    content: '';
+    height: 25px;
+    width: 1px;
+    right: -10px;
+    top:10px;
+    background-color: black;
+    position: absolute;
+}
+.brand-img{
+    margin-left: 20px;
+    width: 80%;
+    object-fit: cover;
+}
+.nav-link span{
+    font-weight: 700;
+} 
+.d-flex{
+    width: 30%;
+}
+.d-flex .nav-item{
+    position: relative;
+    display: flex;
+    margin-left: 15px;
+}
+
+.nav-item i {
+    position: absolute;
+    top:12px;
+    right: -12px;
+}
+.account-img{
+    position: absolute;
+    right: -25px;
+    top:5px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.account-img:hover{
+    cursor: pointer;
+}
+.ad-section{
+    width: 100%;
+    background-image: url(./image/HP_Holiday_Hero_1_1920x1080.jpg);
+    background-size: cover;
+    height: 800px;
+}
+.animate-ad-main-content{
+    position: absolute;
+    top: 30vh;
+    left: 10vw;
+    width: 500px;
+}
+.animate-ad-main-content .heading-content{
+    font-size: 80px;
+    font-weight: 600;
+}
+.animate-ad-main-content .decription{
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 600;
+}
+.explore-ad-content{
+    
+    font-size: 20px;
+}
+.explore-ad-content span{
+    margin-left: 15px;
+}
+.explore-ad-content a{
+    text-decoration: none;
+}
+.explore-ad-content a i {
+    font-size:15px;
+}
+
+
+.carousel-ad{
+    background-color: rgb(254, 254, 254);
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    margin-left: 10%;
+    width: 80%;
+    border-radius: 15px;
+    border: 1px solid rgb(151, 151, 151);
+}
+.active{
+    display: flex !important;
+    z-index: 5;
+}
+.carousel-ad img{
+    display: block;
+    border-radius: 15px;
+}
+.carousel-content{
+    width: 40%;
+}
+.carousel-buy{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-buy a{
+    text-decoration: none;
+    font-weight: 700;
+}
+.carousel-indicators{
+    bottom: -15px;
+    color: black;
+}

@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #2d2d2d;
+    line-height: normal;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+ul{
+    padding-inline-start: 0;
+}
+p{
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+.main{
+    display: flex;
+    height: 100vh;
+   
+}
+.left-ad{
+    width: 15% ;
+    background-color: #000;
+}
+.right-ad{
+    width: 15%;
+    background-color: #000;
+}
+.content{
+    width: 70%;
+    background-color: #2d2d2d;
+    
+}
+.header-web{
+    display: flex;
+    height: 55px;
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #b61818;
+    align-items: center;
+}
+.enter{
+    padding: 0 10px;
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    right: 20px;
+    color: rgb(210, 210, 210);
+    line-height: 35px;
+}
+.header-web .logo{
+   line-height: 55px;
+    text-align: center;
+    width: 25%;
+}
+.header-web .logo img{
+    padding-left: 10px;
+    align-items: center ;
+    width: 90%;
+    background-image: cover;
+}
+.header-web .search-header{
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+.header-web .search-header .input{
+    height: 100%;
+    display:flex ;
+    padding: 10px;
+}
+.header-web .nav-item{
+    height: 35px;
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+}
+.header-web .nav-item a{
+    padding: 8px 12px;
+    background-color: #000;
+    line-height: 20px;
+}
+.header-web .nav-item a i {
+    color: #dadada;
+}
+.header-web .nav-item a i:hover{
+    opacity: 0.7;
+}
+.input{
+    position: relative;
+    
+}
+.form-control {
+    border: 1px solid #2d2d2d;
+}
+.form-control:active{
+    background-color: #888888;
+}
+.input-header{
+    background-color:#000 ;
+    width: 20%;
+    border: 1px solid #2d2d2d;
+}
+.input input{
+    background-color:#000;
+    
+    border-radius: 0;
+}
+.input .input-header:active{
+    background-color: #888888;
+    box-shadow: 1px 2px 1px 1px #888888;
+}
+.bi .bi-search{
+    background-color: transparent  ;
+}
+.carousel-content{
+    display: flex;
+}
+
+.margin-header{
+    color:#dadada;
+    height: 60px;
+    display: flex;
+    margin-left: 5px;
+    background-color: #2d2d2d;
+    justify-content: space-between;
+    align-items: center;
+}
+.margin-header-line{
+    height: 40px;
+    background-color: #1d1d1d;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.margin-header .status{
+    padding-left: 10px;
+    display: block;
+    background-color: #000000;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+.margin-header .status::after{
+    margin: 0;
+    display: block;
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 0;
+    left: 150px;
+    background-color: transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid  #000;
+}
+.margin-header .anime-type{
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.margin-header .anime-type a{
+    border-radius: 3px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #dadada;
+}
+.margin-header .anime-type .typeanime{
+    background-color: #b61818;
+}
+.anime-type .typeCNA{
+    background-color: rgb(23, 172, 23);
+}
+.margin-header .anime-type a:hover{
+    background-color: #404040;
+}
+.anime-type .typeCNA:hover{
+    background-color: #5a5a5a;
+}
+.decription-list{
+    margin-left: 15px;
+    color: red;
+    letter-spacing: 2px;
+}
+.movie-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    background-color: #404040;
+    border-radius: 5px;
+    padding: 10px;
+}
+.movie-item{
+    width: 20%;
+    margin-bottom: 5px;
+    background-color: #000;
+    padding: 5px;
+    position: relative;
+    border: 2px solid #404040;   
+    
+}
+ .movie-item:hover{
+    transform: translateY(-3px) scale(1.05);
+    z-index: 3;
+    
+    transition: 0.8s;
+}
+ .movie-item img{
+    height: 235px;
+    width: 100%;
+    display: block;
+}
+ .movie-item .score{
+    position: absolute;
+    right: 10px;
+    bottom: 37px;
+    padding: 5px 10px;
+    background-color: #903a3a;
+    font-weight: 700;
+    font-size:12px;
+    border-radius: 4px;
+    z-index: 1;
+    color: rgb(248, 247, 247);
+}
+.movie-item .name-movie{
+    line-height: 20px;
+    text-align: center;
+    height: 20px;
+    font-weight: 600;
+    color: rgb(212, 143, 25);
+    text-align: center;
+}
+.movie-item .episode-latest{
+    position: absolute;
+    left: 10px;
+    top:10px;
+    padding: 5px 10px;
+    background-color: #383838;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 3px double #5a5a5a;
+    letter-spacing: 1px;
+    color: rgb(170, 170, 169);
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    height: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid beige;
+}
+.pagination div{
+    display: flex;
+}
+.pagination div a{
+    color: rgb(209, 205, 203);
+    text-align: center;
+    font-weight: 700;
+    line-height: 40px;
+    text-decoration: none;
+    background-color: #5a5a5a;
+    display: block;
+    width: 50px;
+    height: 40px;
+}
+.pagination div :nth-child(1){
+    background-color: green;
+}
+.pagination div a:hover{
+    background-color: greenyellow;
+}
+footer{
+    align-items: center;
+    height: 150px;
+    
+}
+.footer-content{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+}
+
+.footer-content .footer-logo{
+    width: 200px;
+  
+}
+.footer-content .footer-logo img{
+    width: 100%;
+}
+.pre-btn, .nxt-btn{
+    border: none;
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    cursor: pointer;
+    z-index: 8;
+}
+.pre-btn i,.nxt-btn i {
+    font-size: 30px;
+    color: #fc842f;
+}
+.nxt-btn{
+    right: 0;
+}
+
+.movie-carousel{
+    padding:10px;
+    margin-top: 30px;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.movie-carousel::-webkit-scrollbar{
+    display: none;
+}
+.movie-carousel .movie-item{
+    margin-left: 3%;
+    width: 20%;
+    flex: 0 0 auto;
+    
+}
+.carousel-slide{
+    position: relative;
+    height: 300px;
+}
+
+
+
+
