@@ -182,11 +182,17 @@ UPDATE `furamaresort`.`contract` SET `contractDate` = '2020-04-11', `contractEnd
 UPDATE `furamaresort`.`contract` SET `contractDate` = '2020-05-12', `contractEndDate` = '2022-04-23', `deposit` = '124400', `ECode` = '2', `ServiceCode` = '6' WHERE (`contractCode` = '4');
 alter table type_service rename to service_type;
 use furamaresort;
+-- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là 
+-- một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
+
 select * from customer
-where customer.Cname like 'T%' or customer.Cname like 'H%';
+where (customer.Cname like 'T%' or customer.Cname like 'H%' or customer.Cname like 'K%')
+		and length(C.Cname) < 15;
+        
+-- 3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
 select C.*    
 from customer C
-where (YEAR(CURDATE()) - year(C.bornDate) > 15 and YEAR(CURDATE()) - year(C.bornDate) < 30)
+where (YEAR(CURDATE()) - year(C.bornDate) > 18 and YEAR(CURDATE()) - year(C.bornDate) < 30)
 	and (C.address like '%Quang binh' or C.address like '%Quang Tri' or C.address like '%Đà Nẵng');
 
 --  Select Khách hàng và hợp đồng, số lần khách hàng tạo hợp đồng và hiển thị tăng dần theo số lần lập hợp đồng 
@@ -201,6 +207,27 @@ order by timesRent;
 select *
 from customer C join contract CT join service S
 	on C.customerCode = CT.CCode  on CT.serviceCode = S.Scode;
+    
+-- 6.	Hiển thị ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, ten_loai_dich_vu của tất cả các
+--  loại dịch vụ chưa từng được khách hàng thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3
+select S.SCode,S.SName,S.AreaRoom,S.fee,ST.typeSerName
+from customer C join contract CT on C.customerCode = CT.CCode
+join service S  on CT.serviceCode = S.Scode
+join service_type ST on S.typeSCode = ST.typeSerCode
+where CT.contractCode not in (
+					   select CT1.contractCode from contract CT1
+                       where CT1.ContractDate > '2021-01-01' and CT1.ContractDate < '2021-03-31' 
+);
+	 
+-- 8.	Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
+select distinct(C.Cname) from customer C;
+
+-- 9.	Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021
+--  thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
+select month(CT.contractDate) as 'tháng',count(CT.contractCode) as 'số hợp đồng' from contract CT
+where CT.contractDate > '2021-01-01' and CT.contractDate < '2021-12-31'
+group by month(CT.contractDate);
+
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
 -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
 use furamaresort;
@@ -261,10 +288,16 @@ delete from employee E1 where E1.ECode in (
 											)
 											);
                                             
--- 
+-- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+	delete from customer
+    where customer.customerCode in (
+								select C.customerCode from customer C
+                                where C.contractDate < '2021-01-01'
+    );
 
-select CT.*,DateDIFF(CT.contractEndDate,CT.contractDate) as numOfDate                                        
-from contract CT;
+
+-- select CT.*,DateDIFF(CT.contractEndDate,CT.contractDate) as numOfDate                                        
+-- from contract CT;
 
 -- 20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, 
 -- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
@@ -291,7 +324,33 @@ where accomSCode in(
 					select accomSCode 
 					from viewTimesAtSer
 					where times > 2
-				)
+				);
+-- 21.	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” 
+-- và đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”.
+drop view v_nhanvien;
+create view v_nhanvien as
+	select E.* 
+    from employee E 
+    join contract C on E.Ecode = C.Ecode
+    where E.address like '%Hải Châu%' and C.contractDate = '2019-12-12';
+
+-- 22.	Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Liên Chiểu” đối với tất cả 
+-- các nhân viên được nhìn thấy bởi khung nhìn này.
+select * from v_nhanvien;
+update  employee E
+set E.address = 'Liên Chiểu'
+where E.Ecode in (
+					select V.Ecode from v_nhanvien V
+       
+);
+-- 23.	Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó
+--  với ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
+delimiter //
+create procedure sp_xoa_khach_hang(id int)
+begin 
+delete from customer C where C.customerCode = id;
+end //
+delimiter ;
 
 
 

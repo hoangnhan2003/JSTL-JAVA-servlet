@@ -66,7 +66,7 @@ p{
 .header-web .logo img{
     padding-left: 10px;
     align-items: center ;
-    width: 90%;
+    width: 75%;
     background-image: cover;
 }
 .header-web .search-header{
@@ -171,6 +171,8 @@ p{
     width: 150px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    text-align: center;
     
 }
 
@@ -179,6 +181,9 @@ p{
     padding: 10px 15px;
     text-decoration: none;
     color: #dadada;
+    display: block;
+    height: 27px;
+    line-height: 7px;
 }
 .margin-header .anime-type .typeanime{
     background-color: #b61818;
