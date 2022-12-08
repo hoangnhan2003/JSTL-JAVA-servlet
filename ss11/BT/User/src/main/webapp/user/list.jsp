@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>user managerment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     <style>
         a {
             text-decoration: none;
@@ -48,8 +51,16 @@
                 <td>${user.name}</td>
                 <td>${user.email}</td>
                 <td>${user.country}</td>
-                <td><a href="/UserServlet?action=update&id=${user.id}">Edit</a></td>
-                <td><a href="/UserServlet?action=delete-by-procedure&id=${user.id}">Delete</a></td>
+                <td>
+                    <a href="/UserServlet?action=update&id=${user.id}">Edit</a>
+
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="${user.id}">
+                        Delete
+                    </button>
+<%--                    <a href="/UserServlet?action=delete-by-procedure&id=${user.id}">Delete</a>--%>
+                </td>
             </tr>
         </c:forEach>
         <tr>
@@ -57,6 +68,34 @@
             <td colspan="2"><a href="/UserServlet?action=sort">Sort by name</a></td>
         </tr>
     </table>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="#" id="deleteButton">
+                        <button type="button" class="btn btn-primary">Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    const exampleModal = document.getElementById('staticBackdrop')
+    exampleModal.addEventListener('show.bs.modal', event => {
+        const button = event.relatedTarget;
+        const userId = button.getAttribute('data-bs-whatever');
+        document.getElementById('deleteButton').href = "/UserServlet?action=delete-by-procedure&id=" +userId;
+    })
+</script>
 </body>
 </html>
