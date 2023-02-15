@@ -17,8 +17,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/product/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/product/style/sidebar.css">
+    <link rel="stylesheet" href="/student/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/student/style/sidebar.css">
     <style>
         *{
             margin: 0;
@@ -80,7 +80,7 @@
 </head>
 <body>
 <header class="heading">
-    <div class="heading-logo"><img src="/product/image/logo.png" alt="" srcset=""/></div>
+    <div class="heading-logo"><img src="/student/image/logo.png" alt="" srcset=""/></div>
     <div class="heading-name"><h3>NGÔ HOÀNG NHẬN</h3></div>
 </header>
 <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd; display: flex; justify-content: space-between;"  >
@@ -101,9 +101,9 @@
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex" method="post" role="search" action="/ProductServlet">
+            <form class="d-flex" method="post" role="search" action="/StudentServlet">
                 <input type="hidden" name="action" value="search">
-                <input name ="productName"class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name ="address"class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -339,34 +339,43 @@
     </div>
     <div class="main-container">
         <div class="list-link" style="margin-bottom:20px ; margin-left: 10px;">
-            <a class="btn  btn-success" href="/ProductServlet?action=create" role="button">Add new student</a>
+            <a class="btn  btn-success" href="/StudentServlet?action=create" role="button">Add new student</a>
             <a class="btn btn-info" href="#" role="button">Do some thing</a>
 
         </div>
         <table class="table table-striped" style="margin-top:20px;" >
             <thead>
             <tr>
-                <th scope="col">Product name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Color</th>
-                <th scope="col">Category</th>
+                <th scope="col">Student id</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">birthDate</th>
+                <th scope="col">gender</th>
+                <th scope="col">Address</th>
                 <th > Action</th>
                 <th > Action</th>
+                <th>Learning outcome</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${productList}" var="product">
+            <c:forEach items="${studentList}" var="student">
                 <tr>
-                    <td>${product.nameProduct}</td>
-                    <td>${product.price}</td>
-                    <td>${product.quantity}</td>
-                    <td> ${product.color}</td>
-                    <td>${product.category.categoryName}</td>
-                    <td><a type="button" class="btn btn-info" href="/ProductServlet?action=edit&productName=${product.nameProduct}">Edit</a></td>
-                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-product = "${product.nameProduct}">
+                    <td>${student.studentId}</td>
+                    <td>${student.studentName}</td>
+                    <td>${student.birthDate}</td>
+                    <td> <c:choose>
+                        <c:when test = "${student.gender <= 0}">
+                            Nữ
+                        </c:when>
+                        <c:otherwise>
+                           Nam
+                        </c:otherwise>
+                    </c:choose></td>
+                    <td>${student.address}</td>
+                    <td><a type="button" class="btn btn-info" href="/StudentServlet?action=edit&studentId=${student.studentId}">Edit</a></td>
+                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-product = "${student.studentId}">
                         Delete
                     </button></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="/StudentServlet?action=showResult&studentId=${student.studentId}">Result</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -521,13 +530,13 @@
     </div>
     <!-- Copyright -->
 </footer>
-<script src="student/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/student/bootstrap/bootstrap.bundle.min.js"></script>
 <script>
     const exampleModal = document.getElementById("exampleModal");
     exampleModal.addEventListener('show.bs.modal', event => {
         const button = event.relatedTarget;
         const studentId = button.getAttribute('data-bs-product');
-        document.getElementById('deleteButton').href = "/ProductServlet?action=delete&productName=" +studentId;
+        document.getElementById('deleteButton').href = "/StudentServlet?action=delete&studentId=" +studentId;
     })
 </script>
 </body>

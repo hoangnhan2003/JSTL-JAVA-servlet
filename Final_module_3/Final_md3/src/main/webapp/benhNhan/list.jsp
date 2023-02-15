@@ -17,8 +17,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/product/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/product/style/sidebar.css">
+    <link rel="stylesheet" href="/benhNhan/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/benhNhan/style/sidebar.css">
     <style>
         *{
             margin: 0;
@@ -80,7 +80,7 @@
 </head>
 <body>
 <header class="heading">
-    <div class="heading-logo"><img src="/product/image/logo.png" alt="" srcset=""/></div>
+    <div class="heading-logo"><img src="/benhNhan/image/logo.png" alt="" srcset=""/></div>
     <div class="heading-name"><h3>NGÔ HOÀNG NHẬN</h3></div>
 </header>
 <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd; display: flex; justify-content: space-between;"  >
@@ -339,32 +339,34 @@
     </div>
     <div class="main-container">
         <div class="list-link" style="margin-bottom:20px ; margin-left: 10px;">
-            <a class="btn  btn-success" href="/ProductServlet?action=create" role="button">Add new student</a>
+            <a class="btn  btn-success" href="/BenhNhanServlet?action=create" role="button">Add new benh nhan</a>
             <a class="btn btn-info" href="#" role="button">Do some thing</a>
 
         </div>
         <table class="table table-striped" style="margin-top:20px;" >
             <thead>
             <tr>
-                <th scope="col">Product name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Color</th>
-                <th scope="col">Category</th>
+                <th scope="col">Ma bệnh án</th>
+                <th scope="col">Mã bệnh nhân</th>
+                <th scope="col">Tên bệnh nhân</th>
+                <th scope="col">Ngày nhập viện</th>
+                <th scope="col">Ngày ra viện</th>
+                <th>Lí do</th>
                 <th > Action</th>
                 <th > Action</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${productList}" var="product">
+            <c:forEach items="${benhNhanList}" var="benhNhan">
                 <tr>
-                    <td>${product.nameProduct}</td>
-                    <td>${product.price}</td>
-                    <td>${product.quantity}</td>
-                    <td> ${product.color}</td>
-                    <td>${product.category.categoryName}</td>
-                    <td><a type="button" class="btn btn-info" href="/ProductServlet?action=edit&productName=${product.nameProduct}">Edit</a></td>
-                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-product = "${product.nameProduct}">
+                    <td>${benhNhan.maBenhAn}</td>
+                    <td>${benhNhan.maBenhNhan}</td>
+                    <td>${benhNhan.tenBenhNhan}</td>
+                    <td> ${benhNhan.ngayNhapVien}</td>
+                    <td>${benhNhan.ngayRaVien}</td>
+                    <td>${benhNhan.liDo}</td>
+                    <td><a type="button" class="btn btn-info" href="/BenhNhanServlet?action=edit&maBenhAn=${benhNhan.maBenhAn}&maBenhNhan=${benhNhan.maBenhNhan}">Edit</a></td>
+                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-product = "${benhNhan.maBenhAn}" data-bs-maBenhNhan = "${benhNhan.maBenhNhan}">
                         Delete
                     </button></td>
                 </tr>
@@ -521,13 +523,14 @@
     </div>
     <!-- Copyright -->
 </footer>
-<script src="student/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="benhNhan/bootstrap/bootstrap.bundle.min.js"></script>
 <script>
     const exampleModal = document.getElementById("exampleModal");
     exampleModal.addEventListener('show.bs.modal', event => {
         const button = event.relatedTarget;
         const studentId = button.getAttribute('data-bs-product');
-        document.getElementById('deleteButton').href = "/ProductServlet?action=delete&productName=" +studentId;
+        const maBenhNhan = button.getAttribute('data-bs-maBenhNhan');
+        document.getElementById('deleteButton').href = "/BenhNhanServlet?action=delete&maBenhAn=" +studentId+"&maBenhNhan="+maBenhNhan ;
     })
 </script>
 </body>

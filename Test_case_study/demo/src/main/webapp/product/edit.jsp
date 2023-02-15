@@ -16,7 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="product/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/product/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/product/style/sidebar.css">
     <style>
         *{
             margin: 0;
@@ -78,7 +79,7 @@
 </head>
 <body>
 <header class="heading">
-    <div class="heading-logo"><img src="product/image/logo.png" alt="" srcset=""/></div>
+    <div class="heading-logo"><img src="/product/image/logo.png" alt="" srcset=""/></div>
     <div class="heading-name"><h3>NGÔ HOÀNG NHẬN</h3></div>
 </header>
 <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd; display: flex; justify-content: space-between;"  >
@@ -108,23 +109,239 @@
     </div>
 </nav>
 <div class="container-full">
-    <div class="left-container">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">
-                Description
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">Function 1 </a>
-            <a href="#" class="list-group-item list-group-item-action">Function 2</a>
-            <a href="#" class="list-group-item list-group-item-action">Function 3</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Function 4</a>
+    <div class="left-container" style="background-color: #0a1d31">
+        <div class="layout has-sidebar fixed-sidebar fixed-header" style="width:100%">
+            <aside id="sidebar" class="sidebar break-point-lg has-bg-image">
+                <div class="image-wrapper">
+                    <img src="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg" alt="sidebar background" />
+                </div>
+                <div class="sidebar-layout">
+                    <div class="sidebar-header">
+          <span style="
+                  text-transform: uppercase;
+                  font-size: 15px;
+                  letter-spacing: 3px;
+                  font-weight: bold;
+                ">Pro Sidebar</span>
+                    </div>
+                    <div class="sidebar-content">
+                        <nav class="menu open-current-submenu">
+                            <ul>
+                                <li class="menu-item sub-menu">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-vip-diamond-fill"></i>
+                  </span>
+                                        <span class="menu-title">Components</span>
+                                        <span class="menu-suffix">&#x1F525;</span>
+                                    </a>
+                                    <div class="sub-menu-list">
+                                        <ul>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Grid</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Layout</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item sub-menu">
+                                                <a href="#">
+                                                    <span class="menu-title">Forms</span>
+                                                </a>
+                                                <div class="sub-menu-list">
+                                                    <ul>
+                                                        <li class="menu-item">
+                                                            <a href="#">
+                                                                <span class="menu-title">Input</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="menu-item">
+                                                            <a href="#">
+                                                                <span class="menu-title">Select</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="menu-item sub-menu">
+                                                            <a href="#">
+                                                                <span class="menu-title">More</span>
+                                                            </a>
+                                                            <div class="sub-menu-list">
+                                                                <ul>
+                                                                    <li class="menu-item">
+                                                                        <a href="#">
+                                                                            <span class="menu-title">CheckBox</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="menu-item">
+                                                                        <a href="#">
+                                                                            <span class="menu-title">Radio</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="menu-item sub-menu">
+                                                                        <a href="#">
+                                                                            <span class="menu-title">Want more ?</span>
+                                                                            <span class="menu-suffix">&#x1F914;</span>
+                                                                        </a>
+                                                                        <div class="sub-menu-list">
+                                                                            <ul>
+                                                                                <li class="menu-item">
+                                                                                    <a href="#">
+                                                                                        <span class="menu-prefix">&#127881;</span>
+                                                                                        <span class="menu-title">You made it </span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item sub-menu">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-bar-chart-2-fill"></i>
+                  </span>
+                                        <span class="menu-title">Charts</span>
+                                    </a>
+                                    <div class="sub-menu-list">
+                                        <ul>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Pie chart</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Line chart</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Bar chart</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item sub-menu">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-shopping-cart-fill"></i>
+                  </span>
+                                        <span class="menu-title">E-commerce</span>
+                                    </a>
+                                    <div class="sub-menu-list">
+                                        <ul>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Products</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Orders</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">credit card</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item sub-menu">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-global-fill"></i>
+                  </span>
+                                        <span class="menu-title">Maps</span>
+                                    </a>
+                                    <div class="sub-menu-list">
+                                        <ul>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Google maps</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Open street map</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item sub-menu">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-brush-3-fill"></i>
+                  </span>
+                                        <span class="menu-title">Theme</span>
+                                    </a>
+                                    <div class="sub-menu-list">
+                                        <ul>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Dark</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span class="menu-title">Light</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-book-2-fill"></i>
+                  </span>
+                                        <span class="menu-title">Documentation</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-calendar-fill"></i>
+                  </span>
+                                        <span class="menu-title">Calendar</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">
+                  <span class="menu-icon">
+                    <i class="ri-service-fill"></i>
+                  </span>
+                                        <span class="menu-title">Examples</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="sidebar-footer"><span>Sidebar footer</span></div>
+                </div>
+            </aside>
+
+
         </div>
     </div>
     <div class="main-container" style="display:flex; align-items: center; flex-direction: column;">
-        <h1 style="margin-bottom:20px ;">Update product</h1>
+        <h1 style="margin-bottom:20px ;">Update student</h1>
         <form class="row g-3" method="post" action="/ProductServlet" style="width:50%" >
             <input type="hidden" name="action" value="edit">
             <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Name Product</label>
+                <label for="inputEmail4" class="form-label">Product Name</label>
                 <input type="text" name ="productName" class="form-control disabled" id="inputEmail4"  readonly value="${product.nameProduct}">
             </div>
             <div class="col-md-6">
@@ -135,20 +352,20 @@
                 <label for="inputAddress" class="form-label">Color</label>
                 <input type="text" name ="color"class="form-control" id="inputAddress" placeholder="color"value="${product.color}">
             </div>
-            <div class="col-12">
-                <label for="inputAddress2" class="form-label">Quantity</label>
-                <input type="number" name="quantity" class="form-control" id="inputAddress2" placeholder="Quantity"value="${product.quantity}">
-            </div>
-
-            <div class="col-md-4">
-                <label for="inputState" class="form-label">Category</label>
-                <select id="inputState" class="form-select" name="categoryId">
+            <div class="col-12" style="width: 30%">
+                <label for="inputGender" class="form-label">Category</label>
+                <select class="form-select"  name="categoryId" id="inputGender"aria-label="Default select example" value = "${product.category.categoryId}" >
                     <c:forEach items="${categoryList}" var="category">
-                        <option value="${category.categoryId}">${category.categoryName}</option>
+                        <option value="${category.categoryId}"${category.categoryId == product.category.categoryId ? 'selected' : ''} >${category.categoryName}</option>
                     </c:forEach>
-
                 </select>
+
             </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">quantity</label>
+                <input type="number" name="quantity" class="form-control" id="inputAddress2" placeholder="Address"value="${product.quantity}">
+            </div>
+
             <div class="col-12">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -292,67 +509,6 @@
     </div>
     <!-- Copyright -->
 </footer>
-<script src="product/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/student/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<%--<html lang="en">--%>
-<%--<head>--%>
-<%--    <meta charset="UTF-8">--%>
-<%--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
-<%--    <link rel="stylesheet" href="product/bootstrap/bootstrap.min.css">--%>
-<%--    <style>--%>
-<%--        input.disabled {--%>
-<%--            pointer-events:none;--%>
-<%--            color:#AAA;--%>
-<%--            background:#F5F5F5;--%>
-<%--        }--%>
-<%--    </style>--%>
-<%--    <title>Document</title>--%>
-<%--</head>--%>
-<%--<body style="display:flex; justify-content: center; align-items: center; flex-direction: column;">--%>
-<%--<h1 style="margin-bottom:20px ;">Create new product</h1>--%>
-<%--<form class="row g-3" method="post" action="/ProductServlet" style="width:50%" >--%>
-<%--    <input type="hidden" name="action" value="edit">--%>
-<%--    <div class="col-md-6">--%>
-<%--        <label for="inputEmail4" class="form-label">Name Product</label>--%>
-<%--        <input type="text" name ="productName" class="form-control disabled" id="inputEmail4"  readonly value="${product.nameProduct}">--%>
-<%--    </div>--%>
-<%--    <div class="col-md-6">--%>
-<%--        <label for="inputPassword4" class="form-label">Price</label>--%>
-<%--        <input type="number" name ="price"class="form-control" id="inputPassword4" value="${product.price}">--%>
-<%--    </div>--%>
-<%--    <div class="col-12">--%>
-<%--        <label for="inputAddress" class="form-label">Color</label>--%>
-<%--        <input type="text" name ="color"class="form-control" id="inputAddress" placeholder="color"value="${product.color}">--%>
-<%--    </div>--%>
-<%--    <div class="col-12">--%>
-<%--        <label for="inputAddress2" class="form-label">Quantity</label>--%>
-<%--        <input type="number" name="quantity" class="form-control" id="inputAddress2" placeholder="Quantity"value="${product.quantity}">--%>
-<%--    </div>--%>
-
-<%--    <div class="col-md-4">--%>
-<%--        <label for="inputState" class="form-label">Category</label>--%>
-<%--        <select id="inputState" class="form-select" name="categoryId">--%>
-<%--            <c:forEach items="${categoryList}" var="category">--%>
-<%--                <option value="${category.categoryId}">${category.categoryName}</option>--%>
-<%--            </c:forEach>--%>
-
-<%--        </select>--%>
-<%--    </div>--%>
-<%--    <div class="col-12">--%>
-<%--        <div class="form-check">--%>
-<%--            <input class="form-check-input" type="checkbox" id="gridCheck">--%>
-<%--            <label class="form-check-label" for="gridCheck">--%>
-<%--                Check me out--%>
-<%--            </label>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <div class="col-12">--%>
-<%--        <button type="submit" class="btn btn-primary">Submit</button>--%>
-<%--        <button type="reset" class="btn btn-primary">Reset</button>--%>
-<%--    </div>--%>
-<%--</form>--%>
-<%--<script src="product/bootstrap/bootstrap.bundle.min.js"></script>--%>
-<%--</body>--%>
-<%--</html>--%>

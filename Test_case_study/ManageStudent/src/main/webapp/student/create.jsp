@@ -16,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/product/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/product/style/sidebar.css">
+    <link rel="stylesheet" href="/student/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/student/style/sidebar.css">
     <style>
         *{
             margin: 0;
@@ -79,7 +79,7 @@
 </head>
 <body>
 <header class="heading">
-    <div class="heading-logo"><img src="/product/image/logo.png" alt="" srcset=""/></div>
+    <div class="heading-logo"><img src="/student/image/logo.png" alt="" srcset=""/></div>
     <div class="heading-name"><h3>NGÔ HOÀNG NHẬN</h3></div>
 </header>
 <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd; display: flex; justify-content: space-between;"  >
@@ -100,7 +100,7 @@
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex" method="post" role="search" action="/ProductServlet">
+            <form class="d-flex" method="post" role="search" action="/StudentServlet">
                 <input type="hidden" name="action" value="search">
                 <input name ="productName"class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -337,32 +337,31 @@
         </div>
     </div>
     <div class="main-container" style="display:flex; align-items: center; flex-direction: column;">
-        <h1 style="margin-bottom:20px ;">Create benh nhan</h1>
-        <form class="row g-3" method="post" action="/ProductServlet" style="width:50%" >
+        <h1 style="margin-bottom:20px ;">Create student</h1>
+        <form class="row g-3" method="post" action="/StudentServlet" style="width:50%" >
             <input type="hidden" name="action" value="create">
             <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Product name</label>
-                <input type="text" name ="productName" class="form-control disabled" id="inputEmail4" placeholder="product name"  >
+                <label for="inputEmail4" class="form-label">StudentId</label>
+                <input type="text" name ="studentId" class="form-control disabled" id="inputEmail4" placeholder="StudentId"  >
             </div>
             <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">price</label>
-                <input type="number" name ="price"class="form-control" id="inputPassword4" placeholder="price">
+                <label for="inputPassword4" class="form-label">Student name</label>
+                <input type="text" name ="studentName"class="form-control" id="inputPassword4" placeholder="Student name">
             </div>
             <div class="col-12">
-                <label for="inputBirthDate" class="form-label">quantity</label>
-                <input type="number" name ="quantity"class="form-control" id="inputBirthDate" placeholder="quantity">
+                <label for="inputBirthDate" class="form-label">birthDate</label>
+                <input type="date" name ="birthDate"class="form-control" id="inputBirthDate" placeholder="birthDate">
             </div>
             <div class="col-12" style="width: 30%">
-                <label for="inputGender" class="form-label">Category</label>
-                <select class="form-select"  name="categoryId" id="inputGender"aria-label="Default select example" >
-                        <c:forEach items="${categoryList}" var="category">
-                            <option value="${category.categoryId}" >${category.categoryName}</option>
-                        </c:forEach>
-                    </select>
+                <label for="inputGender" class="form-label">Gender</label>
+                <select class="form-select"  name="gender" id="inputGender"aria-label="Default select example" >
+                    <option value="0" >Nữ</option>
+                    <option value="1" >Nam</option>
+                </select>
             </div>
             <div class="col-12">
-                <label for="inputAddress" class="form-label">color</label>
-                <input type="text" name="color" class="form-control" id="inputAddress" placeholder="color">
+                <label for="inputAddress" class="form-label">address</label>
+                <input type="text" name="address" class="form-control" id="inputAddress" placeholder="address">
             </div>
 
 <%--            <div class="col-12">--%>

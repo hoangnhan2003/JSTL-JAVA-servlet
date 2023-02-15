@@ -123,13 +123,8 @@ public class ProductServlet extends HttpServlet {
         int categoryId = Integer.parseInt(sCateId);
         Category category = categoryService.findById(categoryId);
         Product product = new Product(nameProduct,price,quantity,color,category);
-        String message = validate(nameProduct);
-        Map<String, List<String>> mapErrors = new HashMap<>();
-        if (!StringUtils.isNullOrEmpty(message)){
+        productService.insertProduct(product);
 
-        }else {
-            productService.insertProduct(product);
-        }
 
         response.sendRedirect("/ProductServlet");
 

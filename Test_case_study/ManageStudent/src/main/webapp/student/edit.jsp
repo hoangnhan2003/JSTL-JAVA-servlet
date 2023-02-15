@@ -6,7 +6,6 @@
   Time: 6:15 PM
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/product/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/product/style/sidebar.css">
+    <link rel="stylesheet" href="/student/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/student/style/sidebar.css">
     <style>
         *{
             margin: 0;
@@ -80,7 +79,7 @@
 </head>
 <body>
 <header class="heading">
-    <div class="heading-logo"><img src="/product/image/logo.png" alt="" srcset=""/></div>
+    <div class="heading-logo"><img src="/student/image/logo.png" alt="" srcset=""/></div>
     <div class="heading-name"><h3>NGÔ HOÀNG NHẬN</h3></div>
 </header>
 <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd; display: flex; justify-content: space-between;"  >
@@ -101,11 +100,6 @@
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex" method="post" role="search" action="/ProductServlet">
-                <input type="hidden" name="action" value="search">
-                <input name ="productName"class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>
@@ -337,40 +331,49 @@
 
         </div>
     </div>
-    <div class="main-container">
-        <div class="list-link" style="margin-bottom:20px ; margin-left: 10px;">
-            <a class="btn  btn-success" href="/ProductServlet?action=create" role="button">Add new student</a>
-            <a class="btn btn-info" href="#" role="button">Do some thing</a>
+    <div class="main-container" style="display:flex; align-items: center; flex-direction: column;">
+        <h1 style="margin-bottom:20px ;">Update student</h1>
+        <form class="row g-3" method="post" action="/StudentServlet" style="width:50%" >
+            <input type="hidden" name="action" value="edit">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Student id</label>
+                <input type="text" name ="studentId" class="form-control disabled" id="inputEmail4"  readonly value="${student.studentId}">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Name</label>
+                <input type="text" name ="studentName"class="form-control" id="inputPassword4" value="${student.studentName}">
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">birthDate</label>
+                <input type="date" name ="birthDate"class="form-control" id="inputAddress" placeholder="color"value="${student.birthDate}">
+            </div>
+            <div class="col-12" style="width: 30%">
+                <label for="inputGender" class="form-label">Gender</label>
+                <select class="form-select"  name="gender" id="inputGender"aria-label="Default select example"  >
+                    <option value="0"${student.gender == '0' ? 'selected' : ""} >Nữ</option>
+                    <option value="1"${student.gender == '1' ? 'selected' : ""} >Nam</option>
 
-        </div>
-        <table class="table table-striped" style="margin-top:20px;" >
-            <thead>
-            <tr>
-                <th scope="col">Product name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Color</th>
-                <th scope="col">Category</th>
-                <th > Action</th>
-                <th > Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${productList}" var="product">
-                <tr>
-                    <td>${product.nameProduct}</td>
-                    <td>${product.price}</td>
-                    <td>${product.quantity}</td>
-                    <td> ${product.color}</td>
-                    <td>${product.category.categoryName}</td>
-                    <td><a type="button" class="btn btn-info" href="/ProductServlet?action=edit&productName=${product.nameProduct}">Edit</a></td>
-                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-product = "${product.nameProduct}">
-                        Delete
-                    </button></td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </select>
+
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">address</label>
+                <input type="text" name="birthDate" class="form-control" id="inputAddress2" placeholder="Address"value="${student.address}">
+            </div>
+
+<%--            <div class="col-12">--%>
+<%--                <div class="form-check">--%>
+<%--                    <input class="form-check-input" type="checkbox" id="gridCheck">--%>
+<%--                    <label class="form-check-label" for="gridCheck">--%>
+<%--                        Check me out--%>
+<%--                    </label>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+        </form>
     </div>
 
 </div>
@@ -380,26 +383,6 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Confirm delete
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="#" id="deleteButton">
-                    <button type="button" class="btn btn-primary">Delete</button>
-                </a>
-
-            </div>
-        </div>
-    </div>
-</div>
 <footer class="text-center text-lg-start bg-dark text-muted">
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -521,14 +504,6 @@
     </div>
     <!-- Copyright -->
 </footer>
-<script src="student/bootstrap/bootstrap.bundle.min.js"></script>
-<script>
-    const exampleModal = document.getElementById("exampleModal");
-    exampleModal.addEventListener('show.bs.modal', event => {
-        const button = event.relatedTarget;
-        const studentId = button.getAttribute('data-bs-product');
-        document.getElementById('deleteButton').href = "/ProductServlet?action=delete&productName=" +studentId;
-    })
-</script>
+<script src="/student/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
